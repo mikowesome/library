@@ -9,20 +9,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="container">
-        <h1>My Library</h1>
+    <header>
+        <div class="container">
+            <h1 class="header-title">My Library</h1>
+        </div>
     </header>
 
-    <main class="container">
-        <button>+ Add book</button>
-        <div class="book-item">
-            <p class="book-item-title">Naruto</p>
-            <p class="book-item-author">Kirishima</p>
-            <p class="book-item-pages">500</p>
-            <button class="read-toggle-btn">Not read</button>
-            <button class="remove-btn">Remove</button>
+    <main>
+        <div class="container">
+            <button class="add-book-button">+ Add book</button>
+            <div class="book-container">
+                
+            </div>
         </div>
     </main>
+
+    <div class="modal">
+        <form class="add-book-form">
+            <h2 class="modal-title">Add new book</h2>
+            <input type="text" id="book-title" placeholder="Title" maxlength="100" required>
+            <p id="error-message">Book already exist. Please enter a different book.</p>
+            <input type="text" id="book-author" placeholder="Author" maxlength="50" required>
+            <input type="number" id="book-pages" placeholder="Pages" min="1" max="100000" required>
+            <button id="add-new-book-btn">Submit</button>
+        </form>
+    </div>
+    <div class="overlay"></div>
 
     <footer class="container">Copyright © 2022 mikowesome</footer>
     <script src="script.js"></script>
