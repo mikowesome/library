@@ -5,7 +5,26 @@ function Book(title, author, pages) {
     this.isRead = false
 }
 
-const myLibrary = []
+let myLibrary = [
+    // {
+    //     title: 'Hello',
+    //     author: 'me',
+    //     pages: 2,
+    //     isRead: true
+    // },
+    // {
+    //     title: 'Hi',
+    //     author: 'me',
+    //     pages: 2,
+    //     isRead: true
+    // },
+    // {
+    //     title: 'Nice to meet you',
+    //     author: 'me',
+    //     pages: 2,
+    //     isRead: true
+    // }
+]
 
 const bookContainer = document.querySelector('.book-container')
 const addBookButton = document.querySelector('.add-book-button')
@@ -36,6 +55,7 @@ function toggleRead(event) {
             book.isRead = false
         }
     }
+    saveBooksToLocalStorage()
     updateLibrary()
 }
 
@@ -47,6 +67,7 @@ function removeBook(event) {
             myLibrary.splice(index, 1)
         }
     }
+    saveBooksToLocalStorage()
     updateLibrary()
 }
 
@@ -74,12 +95,14 @@ function addBookToLibrary(event) {
         }
     }
     myLibrary.push(newBook)
+    saveBooksToLocalStorage()
     updateLibrary()
     closeModal()
 }
 
 function updateLibrary() {
     bookContainer.innerHTML = ""
+    getBooksFromLocalStorage()
     myLibrary.forEach(book => {
         const bookItem = document.createElement('div')
         const title = document.createElement('p')
@@ -120,3 +143,21 @@ function updateLibrary() {
 }
 
 updateLibrary()
+
+// Local Storage
+
+function saveBooksToLocalStorage() {
+    localStorage.setItem('myBooks', JSON.stringify(myLibrary))
+}
+
+function getBooksFromLocalStorage() {
+    const dataFromLocalStorage = JSON.parse(localStorage.getItem('myBooks'))
+    if (!dataFromLocalStorage) {
+        console.log('no data stored')
+        return
+    } else {
+        myLibrary = dataFromLocalStorage
+    }
+}
+// saveBooksToLocalStorage()
+// getBooksFromLocalStorage()
