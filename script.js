@@ -78,6 +78,9 @@ function openModal() {
 function closeModal() {
     modal.classList.remove('active')
     overlay.classList.remove('active')
+    newBookTitle.value = ''
+    newBookAuthor.value = ''
+    newBookPages.value = ''
 }
 
 function getBookFromInput() {
