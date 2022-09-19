@@ -50,7 +50,6 @@ function toggleRead(event) {
     for (const book of myLibrary) {
         if (book.title == title && book.isRead === false) {
             book.isRead = true
-            console.log(book)
         } else if (book.title == title && book.isRead === true) {
             book.isRead = false
         }
@@ -153,11 +152,8 @@ function saveBooksToLocalStorage() {
 function getBooksFromLocalStorage() {
     const dataFromLocalStorage = JSON.parse(localStorage.getItem('myBooks'))
     if (!dataFromLocalStorage) {
-        console.log('no data stored')
         return
     } else {
         myLibrary = dataFromLocalStorage
     }
 }
-// saveBooksToLocalStorage()
-// getBooksFromLocalStorage()
